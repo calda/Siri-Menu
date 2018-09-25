@@ -34,7 +34,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Menu" id="Uqt-R4-euC"/>
+                    <navigationItem key="navigationItem" title="Menu" id="Uqt-R4-euC">
+                        <barButtonItem key="rightBarButtonItem" title="Shortcuts" id="XMZ-Dg-ePv">
+                            <connections>
+                                <segue destination="JWo-SA-YyQ" kind="show" id="vVD-gM-ocX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1Bq-q2-Ogc" id="lcP-IP-yfM"/>
                     </connections>
@@ -42,6 +48,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="89.505247376311857"/>
+        </scene>
+        <!--Shortcuts-->
+        <scene sceneID="FYv-Ix-FCC">
+            <objects>
+                <tableViewController id="JWo-SA-YyQ" customClass="ShortcutsViewController" customModule="Siri_Menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="4l6-hg-LV2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="JWo-SA-YyQ" id="Mcb-Uu-lPH"/>
+                            <outlet property="delegate" destination="JWo-SA-YyQ" id="AcG-gg-D9S"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Shortcuts" id="XiK-MA-n78"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wa9-vV-tSI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="83.208395802098963"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lUH-c0-eB9">

@@ -26,6 +26,11 @@ class ViewController: UIViewController {
         }), animated: true)
     }
     
+    override func viewDidLoad() {
+        //let sampleMenuURL = Bundle.main.url(forResource: "Sample Menu", withExtension: "docx")!
+        //saveMenu(from: sampleMenuURL)
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {

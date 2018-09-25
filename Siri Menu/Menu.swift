@@ -40,13 +40,7 @@ struct Menu: Codable, CustomStringConvertible {
             // use DateFormatter to pluck out localized day names
             let weekdayFormatter = DateFormatter()
             weekdayFormatter.dateFormat = "EEEE"
-            
-            let yearFormatter = DateFormatter()
-            yearFormatter.dateFormat = "MM/dd/yyyy"
-            
-            let knownSunday = yearFormatter.date(from: "1/2/2000")!
-            let correspondingDay = knownSunday.addingTimeInterval(60 * 24 * 24)
-            return DayOfWeek(from: weekdayFormatter.string(from: correspondingDay))
+            return DayOfWeek(from: weekdayFormatter.string(from: Date()))
         }
     }
     
@@ -59,13 +53,16 @@ struct Menu: Codable, CustomStringConvertible {
     static var current: Menu? {
         get {
             let decoder = JSONDecoder()
-            let data = UserDefaults.standard.data(forKey: "menu")!
-            return try! decoder.decode(Menu.self, from: data)
+            if let data = UserDefaults.shared.data(forKey: "menu") {
+                return try? decoder.decode(Menu.self, from: data)
+            } else {
+                return nil
+            }
         }
         set {
             // serialize the menu
             let encoder = JSONEncoder()
-            UserDefaults.standard.set(try! encoder.encode(newValue), forKey: "menu")
+            UserDefaults.shared.set(try! encoder.encode(newValue), forKey: "menu")
         }
     }
     
@@ -90,6 +87,13 @@ struct Menu: Codable, CustomStringConvertible {
         return meals(for: day).dinner
     }
     
+    func meal(_ meal: Meal, on day: DayOfWeek) -> String? {
+        switch meal {
+        case .lunch:  return lunch(on: day)
+        case .dinner: return dinner(on: day)
+        }
+    }
+    
     
     // MARK: Parsing
     
@@ -99,7 +103,7 @@ struct Menu: Codable, CustomStringConvertible {
         
         var currentDay: DayOfWeek?
         var menuForDay = [Meal: String]()
-        var menuItemBeingBuilt = ""
+        var menuItems = [String]()
         
         var lines = docxContents.components(separatedBy: "\n")
         lines.append("") // add an extra empty line to keep the behavior consistent
@@ -111,20 +115,20 @@ struct Menu: Codable, CustomStringConvertible {
             if currentDay == nil, let dayFromLine = DayOfWeek(from: line) {
                 currentDay = dayFromLine
                 menuForDay = [Meal: String]()
-                menuItemBeingBuilt = ""
+                menuItems = []
             }
             
             else if let day = currentDay {
                 
                 // if the line has content, add it to the menu item being built
                 if !line.isEmpty {
-                    menuItemBeingBuilt = [menuItemBeingBuilt, line].joined(separator: "\n")
+                    menuItems.append(line.trimmingCharacters(in: .whitespaces).trimmingCharacters(in: .punctuationCharacters))
                 }
                 
                 else if line.isEmpty {
                     if menuForDay[.lunch] == nil {
-                        menuForDay[.lunch] = menuItemBeingBuilt.trimmingCharacters(in: .whitespacesAndNewlines)
-                        menuItemBeingBuilt = ""
+                        menuForDay[.lunch] = menuItems.joinedGramatically()
+                        menuItems = []
                         
                         // friday has no dinner, commit now
                         if day == .friday {
@@ -133,7 +137,7 @@ struct Menu: Codable, CustomStringConvertible {
                         }
                         
                     } else {
-                        menuForDay[.dinner] = menuItemBeingBuilt.trimmingCharacters(in: .whitespacesAndNewlines)
+                        menuForDay[.dinner] = menuItems.joinedGramatically()
                         
                         // commit the fully-built menu
                         data[day] = menuForDay
@@ -145,5 +149,28 @@ struct Menu: Codable, CustomStringConvertible {
         
         self.data = data
     }
+    
+}
+
+extension UserDefaults {
+    
+    static var shared: UserDefaults {
+        return UserDefaults(suiteName: "group.SiriMenu")!
+    }
+    
+}
+
+extension Array where Element == String {
+    
+    func joinedGramatically() -> String {
+        if self.count == 0 { return "" }
+        if self.count == 1 { return self[0] }
+        
+        var temp = self
+        temp[temp.count - 1] = "and \(temp[temp.count - 1])"
+        return temp.joined(separator: ", ")
+        
+    }
+    
     
 }
