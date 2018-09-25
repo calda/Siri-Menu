@@ -81,6 +81,16 @@
 					<key>INEnumValueName</key>
 					<string>today</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Tomorrow</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>mbfikH</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>tomorrow</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>

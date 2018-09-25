@@ -25,6 +25,14 @@ class MenuIntentHandler: NSObject, MenuIntentHandling {
             } else {
                 fallthrough
             }
+            
+        case .tomorrow:
+            if let tomorrow = Menu.DayOfWeek.current?.next {
+                dayOfWeek = tomorrow
+            } else {
+                fallthrough
+            }
+            
         case .unknown:
             let response = MenuIntentResponse(code: .invalidDay, userActivity: nil)
             response.day = intent.day

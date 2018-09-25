@@ -11,21 +11,7 @@ import IntentsUI
 
 class ShortcutsViewController: UITableViewController {
     
-    let days = [MenuDay.today, .monday, .tuesday, .wednesday, .thursday, .friday]
-    
-    override func viewDidLoad() {
-        /*let lunchTodayIntent = MenuIntent()
-        lunchTodayIntent.meal = .lunch
-        lunchTodayIntent.day = .today
-        
-        
-        
-        let dinnerTodayIntent = MenuIntent()
-        dinnerTodayIntent.meal = .dinner
-        dinnerTodayIntent.day = .today*/
-        
-        
-    }
+    let days = [MenuDay.today, .tomorrow, .monday, .tuesday, .wednesday, .thursday, .friday]
     
 }
 
@@ -47,6 +33,7 @@ extension ShortcutsViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch days[section] {
         case .today:     return "Today"
+        case .tomorrow:  return "Tomorrow"
         case .monday:    return "Monday"
         case .tuesday:   return "Tuesday"
         case .wednesday: return "Wednesday"
@@ -62,14 +49,16 @@ extension ShortcutsViewController {
         intent.day = days[indexPath.section]
         
         let cell = UITableViewCell()
-        cell.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        cell.textLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        
+        let sectionTitle = self.tableView(tableView, titleForHeaderInSection: indexPath.section)!
         
         if indexPath.item == 0 {
             intent.meal = .lunch
-            cell.textLabel?.text = "Lunch"
+            cell.textLabel?.text = "Lunch (\(sectionTitle))"
         } else {
             intent.meal = .dinner
-            cell.textLabel?.text = "Dinner"
+            cell.textLabel?.text = "Dinner (\(sectionTitle))"
         }
         
         let shortcutButton = INUIAddVoiceShortcutButton(style: .black)
@@ -143,9 +132,5 @@ extension ShortcutsViewController: INUIEditVoiceShortcutViewControllerDelegate {
     func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
+
 }
