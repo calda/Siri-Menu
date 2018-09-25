@@ -54,6 +54,21 @@ struct Menu: Codable, CustomStringConvertible {
         case lunch, dinner
     }
     
+    // MARK: Persistence
+    
+    static var current: Menu? {
+        get {
+            let decoder = JSONDecoder()
+            let data = UserDefaults.standard.data(forKey: "menu")!
+            return try! decoder.decode(Menu.self, from: data)
+        }
+        set {
+            // serialize the menu
+            let encoder = JSONEncoder()
+            UserDefaults.standard.set(try! encoder.encode(newValue), forKey: "menu")
+        }
+    }
+    
     
     // MARK: Data
     
@@ -86,7 +101,10 @@ struct Menu: Codable, CustomStringConvertible {
         var menuForDay = [Meal: String]()
         var menuItemBeingBuilt = ""
         
-        for untrimmedLine in docxContents.components(separatedBy: "\n") {
+        var lines = docxContents.components(separatedBy: "\n")
+        lines.append("") // add an extra empty line to keep the behavior consistent
+        
+        for untrimmedLine in lines  {
             let line = untrimmedLine.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // if there isn't a day being parsed and we reach a new day, start parsing that day
