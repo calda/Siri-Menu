@@ -58,6 +58,7 @@ extension ShortcutsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let intent = MenuIntent()
+        intent.setImage(INImage(uiImage: UIImage(named: "carlos")!), forParameterNamed: \.meal)
         intent.day = days[indexPath.section]
         
         let cell = UITableViewCell()

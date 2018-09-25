@@ -136,6 +136,8 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
+			<key>INIntentDefaultImageName</key>
+			<string>carlos</string>
 			<key>INIntentDescription</key>
 			<string>Shows the menu for the specific meal</string>
 			<key>INIntentDescriptionID</key>

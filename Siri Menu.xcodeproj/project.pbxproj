@@ -23,6 +23,7 @@
 		2ECE7B39215AB12500239802 /* MenuIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE7B38215AB12500239802 /* MenuIntentHandler.swift */; };
 		2ECE7B3A215AB14800239802 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 2ECE7B26215AAB1B00239802 /* Intents.intentdefinition */; };
 		2ECE7B3B215AB25600239802 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E230AF5215A72F600280871 /* Menu.swift */; };
+		2ECE7B3D215AC27800239802 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E230AE6215A70F600280871 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECE7B3D215AC27800239802 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
