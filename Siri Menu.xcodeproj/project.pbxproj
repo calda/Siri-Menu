@@ -12,6 +12,10 @@
 		2E230AE5215A70F500280871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E230AE3215A70F500280871 /* Main.storyboard */; };
 		2E230AE7215A70F600280871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E230AE6215A70F600280871 /* Assets.xcassets */; };
 		2E230AEA215A70F600280871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E230AE8215A70F600280871 /* LaunchScreen.storyboard */; };
+		2E230AF2215A710800280871 /* Sample Menu.docx in Resources */ = {isa = PBXBuildFile; fileRef = 2E230AF1215A710800280871 /* Sample Menu.docx */; };
+		2E230AF4215A712000280871 /* DocxParserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E230AF3215A712000280871 /* DocxParserViewController.swift */; };
+		2E230AF6215A72F600280871 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E230AF5215A72F600280871 /* Menu.swift */; };
+		2E230AF8215A73BD00280871 /* UIView+ConstraintHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E230AF7215A73BD00280871 /* UIView+ConstraintHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		2E230AE6215A70F600280871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E230AE9215A70F600280871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E230AEB215A70F600280871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E230AF1215A710800280871 /* Sample Menu.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sample Menu.docx"; sourceTree = "<group>"; };
+		2E230AF3215A712000280871 /* DocxParserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocxParserViewController.swift; sourceTree = "<group>"; };
+		2E230AF5215A72F600280871 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		2E230AF7215A73BD00280871 /* UIView+ConstraintHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +64,14 @@
 			children = (
 				2E230ADF215A70F500280871 /* AppDelegate.swift */,
 				2E230AE1215A70F500280871 /* ViewController.swift */,
+				2E230AF5215A72F600280871 /* Menu.swift */,
+				2E230AF3215A712000280871 /* DocxParserViewController.swift */,
+				2E230AF7215A73BD00280871 /* UIView+ConstraintHelpers.swift */,
 				2E230AE3215A70F500280871 /* Main.storyboard */,
 				2E230AE6215A70F600280871 /* Assets.xcassets */,
 				2E230AE8215A70F600280871 /* LaunchScreen.storyboard */,
 				2E230AEB215A70F600280871 /* Info.plist */,
+				2E230AF1215A710800280871 /* Sample Menu.docx */,
 			);
 			path = "Siri Menu";
 			sourceTree = "<group>";
@@ -124,6 +136,7 @@
 			files = (
 				2E230AEA215A70F600280871 /* LaunchScreen.storyboard in Resources */,
 				2E230AE7215A70F600280871 /* Assets.xcassets in Resources */,
+				2E230AF2215A710800280871 /* Sample Menu.docx in Resources */,
 				2E230AE5215A70F500280871 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +149,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E230AE2215A70F500280871 /* ViewController.swift in Sources */,
+				2E230AF4215A712000280871 /* DocxParserViewController.swift in Sources */,
+				2E230AF6215A72F600280871 /* Menu.swift in Sources */,
+				2E230AF8215A73BD00280871 /* UIView+ConstraintHelpers.swift in Sources */,
 				2E230AE0215A70F500280871 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

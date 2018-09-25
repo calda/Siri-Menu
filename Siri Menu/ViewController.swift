@@ -11,8 +11,20 @@ import UIKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let sampleMenuUrl = Bundle.main.url(forResource: "Sample Menu", withExtension: "docx")!
+        
+        present(DocxParserViewController(
+            with: sampleMenuUrl,
+            completionHandler: { menu in
+                
+                
+                print(menu.lunch(on: .tuesday))
+                
+                
+                
+        }), animated: true)
+        
+        
     }
 
 
